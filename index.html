@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>15 para ti · CAFE</title>
+  <meta name="description" content="Una pausa de menos de un minuto para ti: 15 sentadillas siguiendo a tu compañera en pantalla.">
+  <meta name="theme-color" content="#fbf8f5">
+  <meta name="color-scheme" content="light">
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="assets/icon-192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="toast" id="toast" role="status" hidden>
+    <span>Es un buen momento para otra pausa ☕</span>
+    <button class="toast-go" id="toast-go">Hacer pausa</button>
+    <button class="toast-x" id="toast-x" aria-label="Cerrar aviso">×</button>
+  </div>
+
+  <main class="app">
+
+    <!-- 1 · INICIO -->
+    <section class="screen" id="home" data-active>
+      <header class="bar">
+        <span class="logo" aria-label="CAFE"><i>C</i><i>A</i><i>F</i><i>E</i></span>
+        <button class="today-pill" id="home-today" hidden aria-label="Ver mi día">
+          <span class="dots-mini" id="home-dots"></span> Hoy
+        </button>
+      </header>
+      <div class="copy">
+        <h1>Haz una pausa.<br>Esta vez <span class="nowrap">es para ti.</span></h1>
+        <p class="lead" id="home-lead"></p>
+      </div>
+      <div class="stage" id="char-home"></div>
+      <div class="actions">
+        <button class="cta" id="btn-start">EMPEZAR MIS 15</button>
+        <button class="link" id="btn-other">Quiero otro ejercicio <span aria-hidden="true">›</span></button>
+      </div>
+    </section>
+
+    <!-- 2 · PREPARACIÓN -->
+    <section class="screen" id="prep">
+      <header class="bar">
+        <button class="icon-btn" data-back aria-label="Volver">
+          <svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>
+        </button>
+        <span class="logo" aria-label="CAFE"><i>C</i><i>A</i><i>F</i><i>E</i></span>
+        <span class="bar-spacer"></span>
+      </header>
+      <div class="copy">
+        <h1 id="prep-title">Busca un espacio cómodo.</h1>
+        <p class="lead" id="prep-lead"></p>
+      </div>
+      <div class="stage" id="char-prep"></div>
+      <div class="actions">
+        <button class="cta" id="btn-ready">¡Estoy lista!</button>
+        <p class="safety">Haz el movimiento a tu ritmo. Si sientes dolor o mareo, detente.</p>
+      </div>
+    </section>
+
+    <!-- 2b · POSTURA (solo sentadillas) -->
+    <section class="screen" id="posture">
+      <header class="bar">
+        <button class="icon-btn" data-back aria-label="Volver">
+          <svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>
+        </button>
+        <span class="logo" aria-label="CAFE"><i>C</i><i>A</i><i>F</i><i>E</i></span>
+        <span class="bar-spacer"></span>
+      </header>
+      <div class="copy">
+        <h1 class="h-posture">Así es la postura<br>de la sentadilla.</h1>
+        <p class="lead">Mira estas imágenes antes de empezar.<br>Después seguimos juntas.</p>
+      </div>
+      <div class="steps-wrap">
+        <ol class="steps" aria-label="Postura en tres pasos">
+          <li class="step">
+            <p class="step-h"><span class="step-n">1</span>De pie</p>
+            <img src="assets/postura-de-pie.jpg" width="320" height="700" alt="De pie, pies al ancho de los hombros y manos juntas al pecho.">
+            <p class="step-t">Pies al ancho de tus hombros.</p>
+          </li>
+          <li class="step main">
+            <p class="step-h"><span class="step-n">2</span>Baja</p>
+            <img src="assets/postura-baja.jpg" width="346" height="700" alt="Sentadilla: cadera hacia atrás y abajo, rodillas en la dirección de los pies, torso algo inclinado y manos delante.">
+            <p class="step-t">Lleva la cadera hacia atrás y baja con control.</p>
+          </li>
+          <li class="step">
+            <p class="step-h"><span class="step-n">3</span>Sube</p>
+            <img src="assets/postura-sube.jpg" width="310" height="700" alt="Vuelve a estar de pie, con una flecha hacia arriba.">
+            <p class="step-t">Vuelve a subir de forma controlada.</p>
+          </li>
+        </ol>
+      </div>
+      <div class="keys">
+        <ul>
+          <li>Cadera hacia atrás.</li>
+          <li>Rodillas alineadas con la dirección de tus pies.</li>
+          <li>Espalda estable y movimiento controlado.</li>
+        </ul>
+        <p class="keys-note">Haz el movimiento solo hasta donde te resulte cómodo.</p>
+      </div>
+      <div class="actions">
+        <button class="cta" id="btn-posture-ready">¡Estoy lista!</button>
+        <p class="safety">Muévete a tu ritmo y dentro de lo que te resulte cómodo. Si sientes dolor o mareo, detente.</p>
+      </div>
+    </section>
+
+    <!-- 3 · EJERCICIO -->
+    <section class="screen" id="exercise">
+      <header class="bar">
+        <button class="icon-btn" id="btn-sound" aria-pressed="false" aria-label="Activar sonido">
+          <svg class="ico-off" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M17 9l4 6M21 9l-4 6"/></svg>
+          <svg class="ico-on" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg>
+        </button>
+        <span class="logo" aria-label="CAFE"><i>C</i><i>A</i><i>F</i><i>E</i></span>
+        <button class="icon-btn" id="btn-exit" aria-label="Salir">
+          <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </header>
+      <div class="counter" aria-live="polite" aria-atomic="true">
+        <span class="num" id="ex-num">1</span><span class="of" id="ex-of">/ 15</span><span class="check" id="ex-check" hidden>✓</span>
+      </div>
+      <div class="stage" id="char-ex"></div>
+      <div class="ex-info">
+        <p class="cue" id="ex-cue">&nbsp;</p>
+        <p class="msg" id="ex-msg" aria-live="polite"></p>
+        <div class="progress" role="progressbar" aria-label="Progreso" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <div class="fill" id="ex-fill"></div>
+        </div>
+        <div class="ex-controls">
+          <button class="pause-btn" id="btn-pause">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M15 6v12"/></svg> Pausar
+          </button>
+          <button class="see-posture" id="btn-see-posture">Ver postura</button>
+        </div>
+      </div>
+
+      <div class="countdown" id="countdown" hidden aria-live="assertive"><span id="countdown-n">3</span></div>
+
+      <div class="sheet posture-sheet" id="posture-sheet" hidden>
+        <div class="sheet-card posture-card" role="dialog" aria-modal="true" aria-labelledby="posture-sheet-title">
+          <h2 id="posture-sheet-title">Así es la postura.</h2>
+          <p class="sheet-sub">Pausamos. Seguimos en la misma repetición.</p>
+          <div class="steps-wrap" id="posture-sheet-steps"></div>
+          <button class="cta" id="btn-follow">Seguir</button>
+        </div>
+      </div>
+
+      <div class="sheet" id="pause-sheet" hidden>
+        <div class="sheet-card" role="dialog" aria-modal="true" aria-labelledby="pause-title">
+          <h2 id="pause-title">Cuando quieras, seguimos.</h2>
+          <p class="sheet-sub" id="pause-sub"></p>
+          <button class="cta" id="btn-continue">CONTINUAR</button>
+          <button class="link" id="btn-leave">Terminar por ahora</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 · FINAL -->
+    <section class="screen" id="final">
+      <header class="bar">
+        <span class="bar-spacer"></span>
+        <span class="logo" aria-label="CAFE"><i>C</i><i>A</i><i>F</i><i>E</i></span>
+        <span class="bar-spacer"></span>
+      </header>
+      <div class="copy center">
+        <p class="done-badge" id="final-badge">15 / 15 ✓</p>
+        <h1 class="h-final">Hoy te pusiste de primera.</h1>
+      </div>
+      <div class="stage" id="char-final"></div>
+      <div class="actions center">
+        <p class="body-final" id="final-body">15 sentadillas.<br>Menos de un minuto.<br>Un espacio que sí fue para ti.</p>
+        <p class="signature">Una pausa de <b class="brand">CAFE</b> ☕️</p>
+        <button class="cta" id="btn-nice">¡Qué bien!</button>
+      </div>
+    </section>
+
+    <!-- 5 · SIGUIENTE PAUSA -->
+    <section class="screen" id="remind">
+      <header class="bar">
+        <span class="bar-spacer"></span>
+        <span class="logo" aria-label="CAFE"><i>C</i><i>A</i><i>F</i><i>E</i></span>
+        <span class="bar-spacer"></span>
+      </header>
+      <div class="copy">
+        <h1>¿Quieres que te recuerde hacer otra pausa hoy?</h1>
+        <p class="lead">Puedes hacer varias pausas durante el día.</p>
+      </div>
+      <div class="options" id="remind-options">
+        <button class="option" data-remind="60"><span class="opt-ico sky">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg></span>En 1 hora</button>
+        <button class="option" data-remind="120"><span class="opt-ico orange">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg></span>En 2 horas</button>
+        <button class="option" data-remind="0"><span class="opt-ico violet">
+          <svg viewBox="0 0 24 24"><rect x="4" y="5.5" width="16" height="14" rx="2.5"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"/></svg></span>Hoy no</button>
+      </div>
+      <div class="remind-result" id="remind-result" hidden>
+        <p class="remind-text" id="remind-text"></p>
+        <button class="ghost" id="btn-ics" hidden>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5.5" width="16" height="14" rx="2.5"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"/></svg>
+          Añadir a mi calendario</button>
+        <button class="cta" id="btn-remind-next">Continuar mi día</button>
+      </div>
+    </section>
+
+    <!-- 6 · HOY -->
+    <section class="screen" id="today">
+      <header class="bar">
+        <span class="logo" aria-label="CAFE"><i>C</i><i>A</i><i>F</i><i>E</i></span>
+        <span class="bar-spacer"></span>
+      </header>
+      <div class="today-wrap">
+        <p class="today-label">HOY</p>
+        <div class="dots" id="today-dots" aria-hidden="true"></div>
+        <div class="tiles" id="today-tiles"></div>
+        <div class="note">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg>
+          <p id="today-note">Cada pausa cuenta.<br>No tienes que hacerlo todo.<br>Ya hiciste algo por ti hoy.</p>
+        </div>
+        <p class="reminder-status" id="reminder-status" hidden></p>
+        <button class="cta" id="btn-again">Hacer otra pausa</button>
+        <button class="link" id="btn-change">Cambiar ejercicio <span aria-hidden="true">›</span></button>
+        <p class="signature small">Una pausa de <b class="brand">CAFE</b> ☕️<br>Transfórmate en paz.</p>
+      </div>
+    </section>
+
+    <!-- 7 · OTRO EJERCICIO -->
+    <section class="screen" id="choose">
+      <header class="bar">
+        <span class="logo" aria-label="CAFE"><i>C</i><i>A</i><i>F</i><i>E</i></span>
+        <button class="icon-btn" data-back aria-label="Cerrar">
+          <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </header>
+      <div class="copy center">
+        <h1 class="h-choose">¿Prefieres otro ejercicio?</h1>
+        <p class="lead">Elige la opción que se sienta mejor para ti hoy.</p>
+      </div>
+      <div class="choices" role="radiogroup" aria-label="Ejercicio">
+        <button class="choice" role="radio" data-ex="squat"><span class="thumb" id="thumb-squat"></span>
+          <b>Sentadillas</b><small>15 repeticiones</small></button>
+        <button class="choice" role="radio" data-ex="chair"><span class="thumb" id="thumb-chair"></span>
+          <b>Sentarse y levantarse de una silla</b><small>15 repeticiones</small></button>
+        <button class="choice" role="radio" data-ex="stretch"><span class="thumb" id="thumb-stretch"></span>
+          <b>Estiramiento suave de pie</b><small>1 minuto</small></button>
+      </div>
+      <div class="actions center">
+        <button class="cta" id="btn-use">Usar este ejercicio</button>
+        <button class="link" data-back>Volver</button>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="character.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
